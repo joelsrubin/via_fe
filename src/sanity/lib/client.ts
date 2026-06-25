@@ -1,15 +1,15 @@
-import {createClient, type QueryParams} from 'next-sanity'
+import { createClient, type QueryParams } from "next-sanity";
 
-import {apiVersion, dataset, projectId} from '../env'
+import { apiVersion, dataset, projectId } from "../env";
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === "development";
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
   useCdn: !isDev,
-})
+});
 
 export async function sanityFetch<QueryResponse>(
   query: string,
@@ -18,6 +18,6 @@ export async function sanityFetch<QueryResponse>(
   return client.fetch<QueryResponse>(
     query,
     params,
-    isDev ? {cache: 'no-store'} : {next: {revalidate: 60}},
-  )
+    isDev ? { cache: "no-store" } : { next: { revalidate: 60 } },
+  );
 }

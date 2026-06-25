@@ -1,4 +1,4 @@
-import {defineQuery} from 'next-sanity'
+import { defineQuery } from "next-sanity";
 
 export const PAGE_BY_SLUG_QUERY = defineQuery(`
   *[_type == "page" && slug.current == $slug][0]{
@@ -14,7 +14,7 @@ export const PAGE_BY_SLUG_QUERY = defineQuery(`
       }
     }
   }
-`)
+`);
 
 export const FIRST_PAGE_QUERY = defineQuery(`
   *[_type == "page"] | order(_createdAt asc)[0]{
@@ -30,4 +30,4 @@ export const FIRST_PAGE_QUERY = defineQuery(`
       }
     }
   }
-`)
+`);
